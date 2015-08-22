@@ -1,4 +1,13 @@
 {
-  "name": "application-name",
-  "version": "0.0.1"
+  "name": "node-api",
+  "version": "0.0.1",
+  "main": "server.js",
+  "dependencies": {
+    "express": "~4.0.0",
+    "body-parser": "~1.0.1",
+    "mysql": "~2.5.0",
+    "sequelize": "~1.7.0",
+    "crypto": "~0.0.3"
+  }
 }
+
