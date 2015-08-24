@@ -134,4 +134,19 @@ router.route('/users/:user_id')
     }, function(error) {
         res.send("User not found");
     });
+})
+
+// get a user by id(accessed at GET http://localhost:8080/api/users/:user_id)
+.get(function(req, res) {
+    var user = User.build();
+
+    user.retrieveById(req.params.user_id, function(users) {
+        if (users) {
+            res.json(users);
+        } else {
+            res.send(401, "User not found");
+        }
+    }, function(error) {
+        res.send("User not found");
+    });
 });
