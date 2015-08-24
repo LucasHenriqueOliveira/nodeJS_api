@@ -112,3 +112,26 @@ router.route('/users')
         res.send("User not found");
     });
 });
+
+// on routes that end in /users/:user_id
+// ----------------------------------------------------
+router.route('/users/:user_id')
+
+// update a user (accessed at PUT http://localhost:8080/api/users/:user_id)
+.put(function(req, res) {
+    var user = User.build();
+
+    user.username = req.body.username;
+    user.password = req.body.password;
+
+    user.updateById(req.params.user_id, function(success) {
+        console.log(success);
+        if (success) {
+            res.json({ message: 'User updated!' });
+        } else {
+            res.send(401, "User not found");
+        }
+    }, function(error) {
+        res.send("User not found");
+    });
+});
