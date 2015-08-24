@@ -72,4 +72,28 @@ var User = sequelize.define('users', {
             User.destroy({where: {id: user_id}}).success(onSuccess).error(onError);
         }
     }
-});  
+});
+
+// IMPORT ROUTES
+// =============================================================================
+var router = express.Router();
+
+// on routes that end in /users
+// ----------------------------------------------------
+router.route('/users')
+
+// create a user (accessed at POST http://localhost:8080/api/users)
+.post(function(req, res) {
+
+    var username = req.body.username; //bodyParser does the magic
+    var password = req.body.password;
+
+    var user = User.build({ username: username, password: password });
+
+    user.add(function(success){
+            res.json({ message: 'User created!' });
+        },
+        function(err) {
+            res.send(err);
+        });
+});
