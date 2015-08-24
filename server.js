@@ -96,4 +96,19 @@ router.route('/users')
         function(err) {
             res.send(err);
         });
+})
+
+// get all the users (accessed at GET http://localhost:8080/api/users)
+.get(function(req, res) {
+    var user = User.build();
+
+    user.retrieveAll(function(users) {
+        if (users) {
+            res.json(users);
+        } else {
+            res.send(401, "User not found");
+        }
+    }, function(error) {
+        res.send("User not found");
+    });
 });
