@@ -149,4 +149,19 @@ router.route('/users/:user_id')
     }, function(error) {
         res.send("User not found");
     });
+})
+
+// delete a user by id (accessed at DELETE http://localhost:8080/api/users/:user_id)
+.delete(function(req, res) {
+    var user = User.build();
+
+    user.removeById(req.params.user_id, function(users) {
+        if (users) {
+            res.json({ message: 'User removed!' });
+        } else {
+            res.send(401, "User not found");
+        }
+    }, function(error) {
+        res.send("User not found");
+    });
 });
