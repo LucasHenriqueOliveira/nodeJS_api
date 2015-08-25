@@ -165,3 +165,10 @@ router.route('/users/:user_id')
         res.send("User not found");
     });
 });
+
+// Middleware to use for all requests
+router.use(function(req, res, next) {
+    // do logging
+    console.log('Something is happening.');
+    next();
+});
