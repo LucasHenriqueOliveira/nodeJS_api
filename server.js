@@ -172,3 +172,7 @@ router.use(function(req, res, next) {
     console.log('Something is happening.');
     next();
 });
+
+// REGISTER OUR ROUTES
+// =============================================================================
+app.use('/api', router);
