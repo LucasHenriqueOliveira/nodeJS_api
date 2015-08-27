@@ -14,3 +14,4 @@ Import the database structure from this file: database.json
 
 ```sh
 sudo node server.js
+```
